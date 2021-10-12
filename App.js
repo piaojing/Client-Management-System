@@ -6,9 +6,7 @@ import Content from './components/Content'
 
 class App extends Component {
   constructor(props){
-    super(props); // initializing component for setting state value
-    
-    // give initial value of subject
+    super(props); 
     this.state={
       Subject:{
         title:'WEB', sub:'Hello WEB from state function'
