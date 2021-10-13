@@ -5,9 +5,11 @@ import TOC from './components/TOC'
 import Content from './components/Content'
 
 class App extends Component {
-  constructor(props){
+  constructor(props){ 
     super(props); 
     this.state={
+      mode:null,
+      welcome:{title:"welcome", desc:"Hello, react!"},
       Subject:{
         title:'WEB', sub:'Hello WEB from state function'
       },
@@ -20,11 +22,32 @@ class App extends Component {
   }
   
   render(){
+    var _title, _desc = null;
+    if (this.state.mode==="welcome"){
+      _title=this.state.welcome.title
+      _desc=this.state.welcome.desc
+    } else if (this.state.mode==="read"){
+      _title=this.state.contents[0].title
+      _desc=this.state.contents[0].desc
+    }
     return (
       <div className="App">
-      <Subject title={this.state.Subject.title} sub={this.state.Subject.sub}></Subject>
+      {/* <Subject title={this.state.Subject.title} sub={this.state.Subject.sub}></Subject> */}
+      <header>
+        {/* preventDefault()로 onClick사건이 일어날때 페지리로드를 막아준다 */}
+        <h1><a href="/" 
+          onClick={
+            function(e){
+              console.log(e); 
+              e.preventDefault();
+              // eslint-disable-next-line react/no-direct-mutation-state
+              this.setState({mode:"welcome"});
+            }.bind(this)            
+          }>{this.state.Subject.title}</a></h1>
+        {this.state.Subject.sub}
+      </header>
       <TOC data={this.state.contents}></TOC>
-      <Content title='HTML' desc='HTML is hyper text markup language'></Content>
+      <Content title={_title} desc={_desc}></Content>
       </div>
     )
   }

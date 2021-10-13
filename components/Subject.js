@@ -4,9 +4,9 @@ class Subject extends Component{ //Subject라는 컴포넌트 정의, 첫글자�
     render(){
       return (
         <header>
-        <h1>{this.props.title}</h1>
-        {this.props.sub}
-      </header>
+          <h1><a href="/">{this.props.title}</a></h1>
+          {this.props.sub}
+        </header>
       )
     }
 }
