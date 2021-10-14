@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
+import Customer from './components/Customer';
 import './App.css';
 
+const patient={
+  "name":"Noi",
+  "hn":"1712084",
+  "gender":"male",
+  "diag":"healthy"
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="gray-background">
-        <img src={logo} lat="logo" alt="img"/>
-        <h2>Let's Develop management system !</h2>
-      </div>
+      <Customer
+        name={patient.name}
+        hn={patient.hn}
+        gender={patient.gender}
+        diag={patient.diag}
+      ></Customer>
     );
   }
 }
