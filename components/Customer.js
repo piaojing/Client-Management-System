@@ -1,36 +1,19 @@
 import React from "react"; 
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 
 class Customer extends React.Component{
     render(){
         return (
-        <div>
-            <CustomerProfile id={this.props.id} name={this.props.name} img={this.props.img} />
-            <CustomerInfo hn={this.props.hn} gender={this.props.gender} diag={this.props.diag}/>            
-        </div>)
-    }
-}
-
-class CustomerProfile extends React.Component{
-    render(){
-        return(
-            <div>
-                <img src={this.props.img} alt="profileImage"></img>
-                <h2>{this.props.name}({this.props.id})</h2> 
-                {/* 소괄호를 주어 이름과 아이디를 같이 출력하게 한다. */}
-            </div>
-        )
-    }
-}
-
-class CustomerInfo extends React.Component{
-    render(){
-        return(
-            <div>
-                <p>{this.props.hn}</p>
-                <p>{this.props.gender}</p>
-                <p>{this.props.diag}</p>
-            </div>
-        )
+            <TableRow>
+                <TableCell>{this.props.id}</TableCell>
+                <TableCell><img src={this.props.img} alt="profileImage"></img></TableCell>
+                <TableCell>{this.props.name}</TableCell>
+                <TableCell>{this.props.gender}</TableCell>
+                <TableCell>{this.props.hn}</TableCell>
+                <TableCell>{this.props.diag}</TableCell>
+            </TableRow>
+            )
     }
 }
 

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 // import logo from "./logo.svg";
 import Customer from './components/Customer';
 import './App.css';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
 const patients=[{
   "id":1,
@@ -32,20 +37,21 @@ class App extends Component {
   render() {
     return (
       <div>
-        {
-          patients.map(c=>{
-            return(
-            <Customer
-              key={c.id}
-              id={c.id}
-              img={c.img}
-              name={c.name}
-              hn={c.hn}
-              gender={c.gender}
-              diag={c.diag}
-            ></Customer>)
-          })
-        }
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>IMAGE</TableCell>
+              <TableCell>NAME</TableCell>
+              <TableCell>GENDER</TableCell>
+              <TableCell>HN</TableCell>
+              <TableCell>DIAGNOSIS</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {patients.map(c=>{return(<Customer key={c.id} id={c.id} img={c.img} name={c.name} hn={c.hn} gender={c.gender} diag={c.diag}></Customer>)})}
+          </TableBody>
+        </Table>
       </div>
     );
   }
